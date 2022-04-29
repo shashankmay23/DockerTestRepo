@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockertest
+  labels:
+    app: dockertest
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dockertest
+  template:
+    metadata:
+      labels:
+        app: dockertest
+    spec:
+      containers:
+        - name: dockertestcontainer
+          image: shashankmay23/testrepo
+          ports:
+            - containerPort: 8080
